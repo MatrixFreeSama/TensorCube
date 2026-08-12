@@ -1,0 +1,12 @@
+// TensorCube 11D Order-4 modular translation unit.
+#include "src/platform_types.inc"
+#include "src/platform_gl.inc"
+#include "src/full55_contract.inc"
+#include "src/random_quotient.inc"
+#include "src/solve_exact.inc"
+#include "src/cuda_wmma.inc"
+#include "src/render_views.inc"
+#include "src/render_snapshot.inc"
+#include "src/ui_state.inc"
+#include "src/ui_text.inc"
+#include "src/win32_entry.inc"

@@ -13,7 +13,7 @@ Human contribution includes:
 - failure analysis and acceptance criteria
 - final artifact selection
 
-For public licensing, the licensor and copyright name used by this repository is **MatrixFreeSama** under the MatrixFreeSama Permissive License 1.0 (MFSPL 1.0). The license grants its permissions automatically and does not require a separate permission or reporting channel.
+For public licensing, the licensor and copyright name used by this repository is **MatrixFreeSama** under the MatrixFreeSama Permissive License 2.0 (MFSPL 2.0). The default grant is attribution-free and requires no permission request, registration, reporting, source publication, or license-notice retention. MFSPL 2.0 separately defines a direct, dormant `Provenance Notice` mechanism for Licensees who actually copy or adapt Covered Material. `Designated Project Credit` under that mechanism is a presentation label and is explicitly not a declaration of legal authorship, contribution, ownership, or endorsement.
 
 ## AI-assisted implementation disclosure
 

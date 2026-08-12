@@ -2,143 +2,93 @@
   <img src="assets/icon/TensorCube.png" width="144" alt="TensorCube i/s/R tensor icon">
 </p>
 
-# TensorCube
+# TensorCube 11D Order-4
 
-**GPU Tensor Iteration Solver**  
-**Matrix-Free exact discrete tensor computation**
+**GPU Tensor Iteration Solver**
 
-TensorCube is an archival research artifact for studying how a representation change can move an extreme-scale discrete state problem away from explicit global materialization and toward a GPU-oriented Matrix-Free computation model.
+This branch is the standalone `(d, N) = (11, 4)` TensorCube research artifact. It remains separate from `main` and does not redefine the archived main TensorCube executable.
 
-The cube is used as a compact, visual stress test. The research object is the representation and execution structure: stable identity, logical site, discrete orientation, orbit/component factorization, on-demand state reconstruction, exact verification, and direct Matrix-Free rendering.
+## Fixed mathematical instance
 
-> **Archival status**  
-> TensorCube is intentionally preserved without an ongoing maintenance commitment. Its validated implementation was produced through a long-running AI programming-agent workflow whose effective development context reached its practical limit. Continuing implementation from a newly initialized conversation would no longer preserve the same accumulated context and could introduce architectural, behavioral, or terminology drift. The released executable already contains the intended demonstrator and verification path, so preservation of the validated artifact is preferred over reopening development under a reset context.
+- Dimension: `11`
+- Order: `4`
+- Full lattice: `4^11 = 4,194,304`
+- Interior lattice: `2^11 = 2,048`
+- Surface identities: `4,192,256`
+- Coordinate rotation planes: `55`
+- Layers per plane: `4^9 = 262,144`
+- Addressable legal layer descriptors: `14,417,920`
+- Natural boundary-count surface orbits: `11`
 
-## Core state
+The authoritative puzzle state is stable identity / logical site / discrete orientation (`i / s / R`). The current state is stored explicitly as StateVector arrays; legal operators and the public group basis are Matrix-Free / sparse.
 
-Each surface element is represented by three authoritative quantities:
+## 11D legal basis
 
-- `i` — stable identity
-- `s` — logical site
-- `R` — discrete orientation
+The source order-4 local legal macro family is lifted onto arbitrary 11D axis triples. A sparse legal star basis is built for every boundary-count surface orbit, and every orbit basis covers all `55` coordinate planes.
 
-The high-order path does not require the complete surface state to exist as one explicit global array. Component state is reconstructed when needed from a compact descriptor and the corresponding logical component.
+The active source contains none of the retired benchmark substitutions: no five-stage disjoint-plane normal form, no public eleven-matching solve family, no `74,752` independent 3D-fiber direct product, no `chartForRegion` / `TC_SOURCE_FIBERS` path, and no reverse-stage quarter-turn inference special case.
 
-## Supported orders
+## Deep random generation
 
-The executable exposes:
+Every Deep Random request obtains fresh Windows `BCryptGenRandom` material: a `256`-bit key plus a `32`-bit nonce. A ChaCha-style stream drives unbiased Fisher-Yates sampling of an even permutation for every full 11D boundary-count orbit. A separate `10`-bit legal quotient extension supplies the implemented reachable orbit-parity class.
 
-- every order from `2` through `49`
-- `100`
-- `1000`
-- `10000`
-- `100000`
+The first Deep Random request can be much slower because it also constructs the reusable public 11D legal basis. Later requests reuse that basis but still obtain fresh random source material and generate a new puzzle state.
 
-For a cube of order `N`, the number of surface sites is
+After state publication, the generator key, nonce, PRNG state, temporary shuffle and generated quotient bits are not solver inputs. No scramble move history is retained.
 
-```text
-S(N) = 6N² - 12N + 8
-```
+## State-derived solve
 
-For even `N`, the component count used by the Matrix-Free decomposition is
+The solve path reads only the authoritative current StateVector and public legal basis. It derives current orbit parity, recovers the `10`-bit legal quotient by GF(2) elimination, removes that quotient, reconstructs each current orbit permutation, factors it through the sparse legal star basis, builds the legal inverse correction plan, independently replays that plan, requires exact identity, confirms identity on the authoritative state, and restores the exact pre-solve scrambled state using the recovered factors.
 
-```text
-C(N) = N²/4 - N/2 + 1
-```
+`Exact PASS` requires all `4,192,256` surface identities and every complete signed eleven-axis orientation to return exactly to identity.
 
-At `N = 100000`, this corresponds to `59,998,800,008` surface sites and `2,499,950,001` orbit components without explicitly materializing the full surface tensor.
+The current factorization path is CPU state-only. CUDA remains for device reporting and the independent WMMA/Tensor-Core self-test. No GPU/Tensor-Core factorization timing claim is made.
 
-## Solver structure
+## Timing boundary
 
-The solver follows one exact discrete factorization path rather than retaining a scramble history or relying on a conventional cube-specific lookup solver.
+Displayed Solve time includes state-derived quotient recovery, state-only factorization, independent full Exact replay, authoritative identity confirmation and restoration of the pre-solve scrambled state. It excludes one-time public-basis construction and Deep Random generation.
 
-```text
-compact random descriptor
-        ↓
-logical component
-        ↓
-on-demand Matrix-Free component state
-        ↓
-exact quotient/component factorization
-        ↓
-GPU/CPU work execution
-        ↓
-exact replay / identity verification
-        ↓
-verified solution
-```
+## Presentation and 11D observation
 
-The GPU execution path includes a runtime-loaded NVIDIA CUDA Driver path with an INT8 WMMA Tensor Core reduction lane where the runtime self-test accepts it. The application does not statically import `nvcuda.dll`.
+The interface fixes the visible mathematical identity to `11维 · 4阶` and retains the mainline TensorCube interaction conventions.
 
-## Matrix-Free high-order rendering
+### Visualization limitation: apparent center-first restoration is a projection artifact
 
-For orders above 10, rendering does not build six persistent face-state textures or a CPU face-pixel cache. A visible fragment is mapped directly through the logical state:
+The authoritative state is eleven-dimensional, while the interface can show only three-dimensional slices or projections. The other eight coordinates are fixed by the observation chart, so a site that visually resembles a face-center piece is not a semantic "center piece" in the solver.
+
+Projected center-like, edge-like and corner-like locations can belong to different high boundary-count 11D orbits. Replaying exact factors in orbit/factor order can therefore make a projected center-like region appear aligned first. This is an observation-layer limitation of the 11D-to-3D map, not evidence that TensorCube introduces, improves, hybridizes or inherits a conventional higher-order Rubik's-cube strategy.
+
+The solver does not use center solving, edge pairing, `3×3×3` reduction, layer-by-layer solving, CFOP, Roux, ZZ, Kociemba/two-phase search, IDA*, pattern databases, OLL/PLL, or conventional parity-case handling. Changing hidden-axis slices can change which projected region appears to align first, as expected for a projection artifact.
+
+## Executable
 
 ```text
-fragment
-  → logical site
-  → orbit component
-  → descriptor-derived component state
-  → quotient reversal
-  → inverse stabilizer transversal
-  → source marker
-  → color
+dist/TensorCube_11D_Order4.exe
 ```
 
-Screen resolution changes fragment count only. It does not define a lower-order proxy puzzle.
+SHA-256: `3822abb2879e90423a907d6b5713afa37b205f2445a1de9d3cadd392c041e848`  
+Size: `74,752 bytes`.
 
-## Exactness boundary
+The embedded `RT_ICON` resources `1..7` and `RT_GROUP_ICON` resource `101` match the approved no-version-suffix source TensorCube icon resources byte-for-byte.
 
-A displayed successful solve is accepted only after exact discrete state verification. TensorCube is not presented as a shortest-path solver. Its benchmark target is exact completion under the same representation path across widely separated orders.
+## Source representation
 
-## Windows executable
+The Windows translation unit is split into small auditable modules under `src/`. `TensorCube11D4.cpp`, `full55_core_freestanding.hpp` and `full55_local_cycles.inc` are thin include-order roots.
 
-The fixed Windows artifact is:
+A local rebuild of this modular representation produced `.text`, `.rdata`, `.data` and `.rsrc` sections byte-identical to the published executable. Separate whole-file PE hashes differ only through the COFF timestamp field, so the published executable hash above remains the fixed artifact identity.
 
-```text
-dist/TensorCube.exe
-```
+Run `python validate_11d4.py` from the branch root for the package/static audit.
 
-SHA-256:
+## Academic scope boundary
 
-```text
-720dcbcd0c9c3b03006bd668ab1dd3988847cb1dbed1eaf866ee5990d1ea0545
-```
+The proven family is the implemented canonical source-macro signed-orientation lift plus the state-derived legal parity quotient. This branch does not claim arbitrary pure orientation-kernel state coverage, uniform sampling of every element of the complete abstract 11D puzzle group, that the complete current StateVector itself is Matrix-Free, or GPU/Tensor-Core factorization timing.
 
-The executable is a portable x86-64 Windows GUI program. The final OpenGL shader compilation and vendor-specific GPU execution occur on the user's runtime environment.
+## License and authorship
 
-## Documentation
+Human investigator: **Zining Kestis Wong** (`MatrixFreeSama`).
 
-- [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — representation and execution model
-- [`docs/REPRODUCIBILITY.md`](docs/REPRODUCIBILITY.md) — artifact verification and benchmark protocol
-- [`MANIFEST.sha256`](MANIFEST.sha256) — fixed binary asset hashes
+This branch is distributed under the **MatrixFreeSama Permissive License 2.0 (MFSPL 2.0)**. By default it imposes no attribution, license-notice retention, reporting, source-publication, or provenance-disclosure requirement. A Licensee who actually copied or adapted Covered Material can later acquire a narrow provenance/project-credit obligation only after receiving a direct valid `Provenance Notice` from the Licensor.
 
-## Authorship and implementation disclosure
+Pure ideas, algorithms, mathematical similarity, inspiration, and genuinely independent implementations that do not reproduce or adapt protected expression are expressly outside the license scope.
 
-Research direction, problem formulation, mathematical representation, architecture decisions, experimental design, failure analysis, and acceptance criteria were supplied by the human investigator.
-
-The executable implementation and its source code were generated with AI assistance; no source code was manually authored by the human investigator.
-
-## Citation
-
-Citation metadata is provided in [`CITATION.cff`](CITATION.cff).
-
-## License
-
-TensorCube is distributed under the **MatrixFreeSama Permissive License 1.0 (MFSPL 1.0)**. See [`LICENSE`](LICENSE).
-
-The license grants automatic commercial and non-commercial permission without a separate request, registration, reporting, or approval channel. It imposes no additional field-of-use restriction beyond compliance with the law applicable to the user's actual conduct, and it includes user-responsibility and indemnification provisions protecting MatrixFreeSama to the maximum extent permitted by applicable law.
-
-For SPDX-oriented metadata, the local custom reference is:
-
-```text
-LicenseRef-MatrixFreeSama-Permissive-1.0
-```
-
----
-
-### 中文简介
-
-TensorCube 是一个用于展示 **Matrix-Free 表示重构** 的存档研究制品。它以高阶 `N×N×N` 转动拼图作为可视化压力测试载体，但研究重点不是提出新的人工魔方公式，而是验证：当完整逻辑状态不再被要求显式物化时，极端规模的离散计算能否被压缩到消费级 GPU 可承载的表示与执行结构中。
-
-本项目有意不设持续维护路线。经过验证的实现来自一个长期 AI 编程代理工作流，其有效开发上下文已达到实际容量边界；若在新建对话中重新继续开发，累积上下文无法原样延续，存在架构、行为和术语漂移的风险。当前发布的 EXE 已包含本研究制品预定的演示与验证能力，因此选择封存已验证制品，而不是在重置上下文后继续演化。
+See `LICENSE`, `LICENSE_GUIDE.md`, and `AUTHORS.md`.

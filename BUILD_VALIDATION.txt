@@ -1,0 +1,85 @@
+TensorCube 11D Order-4
+BUILD / MATHEMATICAL VALIDATION
+
+ARTIFACT
+- Windows x64 PE32+ GUI executable: PASS
+- Path: dist/TensorCube_11D_Order4.exe
+- Size: 74,752 bytes
+- SHA-256: 3822abb2879e90423a907d6b5713afa37b205f2445a1de9d3cadd392c041e848
+- Current factorization path: CPU state-only
+- Legal operator/group representation: Matrix-Free / sparse
+- Authoritative current puzzle state: explicit i/s/R StateVector arrays
+
+FIXED MATHEMATICS
+- d = 11; N = 4
+- full lattice = 4,194,304; interior = 2,048; surface = 4,192,256
+- coordinate rotation planes = 55; layers / plane = 262,144
+- natural boundary-count surface orbits = 11
+
+RETIRED BENCHMARK SUBSTITUTIONS
+- five-stage disjoint-plane normal form: ABSENT
+- public eleven-matching solve family: ABSENT
+- 74,752 source-3D fibers: ABSENT
+- chartForRegion / TC_SOURCE_FIBERS: ABSENT
+- reverse-stage quarter-turn inference special case: ABSENT
+
+11D LEGAL BASIS
+- source order-4 local legal macros lifted to arbitrary axis triples: PASS
+- public sparse basis built for every 11D boundary-count orbit: PASS
+- each orbit basis plane mask: 55 / 55
+- scramble provenance plane mask: 55 / 55
+- recovered solve-plan provenance plane mask: 55 / 55
+
+DEEP RANDOM
+- Windows BCryptGenRandom, 256-bit key + 32-bit nonce
+- unbiased Fisher-Yates even permutation per orbit + 10-bit legal quotient
+- first request may build the reusable public basis; later requests use fresh random source material
+- retained scramble word/path after publication: 0
+
+SOLVER INFORMATION BOUNDARY
+- solver input: authoritative current StateVector + public legal basis
+- solver access to generator key / nonce / PRNG shuffle / generated quotient bits: 0
+- descriptor inversion: absent; generator-history rewind: absent
+
+STATE-DERIVED SOLVE
+- current-state orbit parity -> GF(2) quotient recovery: PASS
+- quotient removal -> zero residual orbit parity: REQUIRED
+- current piece->site permutation reconstruction: PASS
+- sparse legal star factorization: PASS
+- recovered legal inverse plan: PASS
+- conventional center / edge-pair / 3x3-reduction stages: ABSENT
+- Kociemba/two-phase, IDA*, PDB, CFOP, Roux, ZZ, OLL/PLL pipelines: ABSENT
+
+EXACT VERIFICATION
+- independent of random-generation secret: PASS
+- checks all 4,192,256 surface identities and complete signed 11-axis orientation: PASS
+- authoritative identity confirmation: PASS
+- exact pre-solve scrambled state restored using recovered factors: PASS
+
+TIMING CONTRACT
+- includes quotient recovery, state-only factorization, full Exact replay, identity confirmation and scrambled-state restoration
+- excludes one-time public-basis construction and Deep Random generation
+- CPU state-only timing; no GPU/Tensor-Core factorization timing claim
+
+VISUALIZATION LIMITATION
+- authoritative state dimension: 11; displayed view dimension: 3
+- apparent center-first alignment can arise from 11D-to-3D observation and orbit playback order
+- NOT a conventional center-first / reduction solving stage
+
+SOURCE REPRESENTATION / REBUILD CHECK
+- active source is modular under src/; wrapper roots preserve include order
+- .text SHA-256: 31c856f65671b16519178148d937f015436d39e220c2f5123cd7e219b41417b5
+- .rdata SHA-256: ce8fe2324636603763b593c999547d662a9563223bef8fa0cb135e5fcab76307
+- .data SHA-256: 5686b90192f066fb95f4f285e6f1feac3c4df92cd10ba167368f4391f4140bc9
+- .rsrc SHA-256: c3c7150e369e88e22eafc73084488316c96ffae6fa70dc043616faf50563b206
+- modular rebuild sections are byte-identical to the published EXE
+- separate links differ only in the COFF timestamp field
+
+ACADEMIC SCOPE LIMIT
+- arbitrary pure orientation-kernel states: NOT CLAIMED
+- complete uniform sampling of entire abstract 11D puzzle group: NOT CLAIMED
+- full current StateVector being Matrix-Free: NOT CLAIMED
+- GPU/Tensor-Core factorization timing: NOT CLAIMED
+
+RUNTIME LIMIT
+- Windows runtime remains authoritative for GUI/CUDA compatibility and wall-clock performance
