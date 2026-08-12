@@ -125,14 +125,14 @@ Citation metadata is provided in [`CITATION.cff`](CITATION.cff).
 
 ## License
 
-TensorCube is distributed under the **MatrixFreeSama Permissive License 1.0 (MFSPL 1.0)**. See [`LICENSE`](LICENSE).
+TensorCube is distributed under the **MatrixFreeSama Permissive License 2.0 (MFSPL 2.0)**. See [`LICENSE`](LICENSE).
 
 The license grants automatic commercial and non-commercial permission without a separate request, registration, reporting, or approval channel. It imposes no additional field-of-use restriction beyond compliance with the law applicable to the user's actual conduct, and it includes user-responsibility and indemnification provisions protecting MatrixFreeSama to the maximum extent permitted by applicable law.
 
 For SPDX-oriented metadata, the local custom reference is:
 
 ```text
-LicenseRef-MatrixFreeSama-Permissive-1.0
+LicenseRef-MatrixFreeSama-Permissive-2.0
 ```
 
 ---
