@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use TensorCube in research, please cite this software artifact."
+title: "TensorCube: GPU Tensor Iteration Solver"
+type: software
+authors:
+  - family-names: "Wong"
+    given-names: "Zining Kestis"
+repository-code: "https://github.com/MatrixFreeSama/TensorCube"
+url: "https://github.com/MatrixFreeSama/TensorCube"
+date-released: 2026-08-11
+license-url: "https://github.com/MatrixFreeSama/TensorCube/blob/main/LICENSE"
+abstract: >-
+  TensorCube is an archival research artifact demonstrating a GPU-oriented
+  Matrix-Free representation for exact discrete high-order cube-state
+  computation, factorization, verification, and direct high-order rendering.
+keywords:
+  - matrix-free
+  - gpu computing
+  - tensor computation
+  - discrete reconfiguration
+  - exact verification
+  - scientific computing

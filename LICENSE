@@ -1,0 +1,60 @@
+MatrixFreeSama Permissive License 1.0 (MFSPL 1.0)
+
+Copyright (c) 2026 MatrixFreeSama
+
+1. Permission Grant
+
+Permission is hereby granted, free of charge, to any person or legal entity obtaining a copy of this software and associated documentation (the "Software"), to use, reproduce, execute, study, modify, adapt, merge, publish, distribute, sublicense, sell, offer as part of a product or service, and otherwise exploit the Software, in source or binary form, for commercial or non-commercial purposes, without prior notice, registration, reporting, approval, or separate permission from MatrixFreeSama, subject to this License.
+
+2. Attribution and License Notice
+
+Any redistribution of the Software, or of a substantial portion of the Software, in source or binary form must retain or reproduce this copyright notice and this License in the source distribution, accompanying documentation, legal notices, or another reasonably accessible location supplied with the redistributed work.
+
+This requirement does not create any obligation to notify MatrixFreeSama of use, distribution, modification, sale, or deployment.
+
+3. No Field-of-Use Restriction; Applicable Law
+
+This License imposes no additional restriction based on field of endeavor, subject matter, industry, audience, or lawful content category. The permissions granted by this License apply equally to commercial, research, educational, entertainment, industrial, and other uses.
+
+Each user is solely responsible for ensuring that the user's use, modification, deployment, distribution, sale, provision of services, and other conduct involving the Software complies with all laws, regulations, court orders, and other legally binding requirements applicable to that conduct. This License grants no permission to violate applicable law and creates no immunity, defense, or exemption from applicable law.
+
+4. User Responsibility and Indemnification
+
+To the maximum extent permitted by applicable law, each person or legal entity exercising rights under this License is responsible for that person's or entity's own use, modification, integration, deployment, distribution, sale, provision of services, and other conduct involving the Software.
+
+To the maximum extent permitted by applicable law, that person or entity shall indemnify, defend, and hold harmless MatrixFreeSama and contributors from and against third-party claims, liabilities, damages, judgments, settlements, penalties, fines, costs, and reasonable legal fees to the extent arising out of or relating to that person's or entity's conduct involving the Software, including violation of applicable law or this License, except to the extent caused by MatrixFreeSama's own intentional unlawful conduct.
+
+To the maximum extent permitted by applicable law, if a user's conduct involving the Software directly causes a legally recoverable loss to MatrixFreeSama, the user is responsible for that loss to the extent the loss is legally attributable to that conduct.
+
+5. No Warranty
+
+THE SOFTWARE IS PROVIDED "AS IS" AND "AS AVAILABLE", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, NON-INFRINGEMENT, ACCURACY, RELIABILITY, OR FITNESS OF RESULTS.
+
+6. Limitation of Liability
+
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, MATRIXFREESAMA AND CONTRIBUTORS SHALL NOT BE LIABLE TO A USER FOR ANY INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, PUNITIVE, OR CONSEQUENTIAL DAMAGES, OR FOR LOSS OF PROFITS, REVENUE, DATA, GOODWILL, BUSINESS OPPORTUNITY, OR BUSINESS INTERRUPTION, ARISING FROM OR RELATED TO THE SOFTWARE OR THIS LICENSE, WHETHER IN CONTRACT, TORT, STRICT LIABILITY, OR OTHERWISE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Nothing in this Section limits a user's obligations under Section 4.
+
+7. Names, Marks, and Endorsement
+
+This License does not grant any trademark, service-mark, publicity, or endorsement right in the name "MatrixFreeSama" or any associated project name, logo, or mark, except that factual attribution and reproduction of notices required by this License are permitted.
+
+8. No Separate Permission Channel
+
+The permissions in this License are automatic upon compliance with its terms. No separate license request, registration, reporting process, approval channel, or individual authorization from MatrixFreeSama is required or implied.
+
+9. Acceptance
+
+By exercising any permission granted by this License, a person or legal entity accepts and agrees to the conditions of this License to the extent such acceptance is recognized by applicable law. If those conditions are not accepted, the permissions granted by this License may not be exercised.
+
+10. Severability
+
+If any provision of this License is held unenforceable in a particular jurisdiction, that provision shall be applied to the maximum extent permitted there, and the remaining provisions shall remain in effect to the extent permitted by law.
+
+11. Version Identification
+
+This text is the MatrixFreeSama Permissive License 1.0. A work licensed under this version remains governed by this version unless the copyright holder expressly states that another version also applies. Publication of a later version does not automatically alter the license terms of an already distributed copy.
+
+Human-readable short name: MFSPL 1.0
+SPDX custom reference: LicenseRef-MatrixFreeSama-Permissive-1.0

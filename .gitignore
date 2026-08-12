@@ -1,0 +1,20 @@
+# Local build products
+*.obj
+*.o
+*.pdb
+*.ilk
+*.exp
+*.lib
+
+# Local editor / IDE state
+.vs/
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.log
+.DS_Store
+Thumbs.db
+
+# Do not ignore the archived distribution executable in dist/.
