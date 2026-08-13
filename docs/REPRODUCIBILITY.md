@@ -33,10 +33,10 @@ Vendor-specific runtime behavior must therefore be measured on the machine under
 
 ## Reference physical test platform
 
-The primary machine reserved for TensorCube measurements is a 2025 **ROG Strix SCAR 18 (G835)**, sold in China as **ROG 枪神9 Plus 超竞版**. The reference unit is recorded as:
+The primary machine reserved for TensorCube measurements is a 2025 **ROG Strix SCAR 18 (G835LW)**, sold in China as **ROG 枪神9 Plus 超竞版**. The reference unit is recorded as:
 
 ```text
-System: ROG Strix SCAR 18 (2025) G835
+System: ROG Strix SCAR 18 (2025) G835LW
 CPU: Intel Core Ultra 9 275HX
      24 cores / 24 threads
      up to 5.4 GHz
@@ -48,7 +48,7 @@ Storage: 4 TB SSD total capacity (installed test configuration)
 Display: 18-inch 2560×1600 240 Hz Mini LED ROG Nebula HDR display
 ```
 
-CPU, GPU, VRAM, rated graphics-power configuration, and display characteristics above follow the manufacturer's G835 platform specification. The 32 GB memory and 4 TB storage values identify the installed physical test unit and must not be generalized to every G835 retail SKU.
+CPU, GPU, VRAM, rated graphics-power configuration, and display characteristics above follow the manufacturer's G835LW platform specification. The 32 GB memory and 4 TB storage values identify the installed physical test unit and must not be generalized to every G835LW retail configuration.
 
 The static platform description does not replace per-session environment capture. For every measured benchmark session, record at least:
 
