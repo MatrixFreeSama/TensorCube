@@ -133,6 +133,22 @@ ASUS defines `Turbo` as its charging-only high-performance operating mode, maxim
 
 The machine description identifies the physical reference platform, not a universal specification for every G835LW retail configuration. Measured solve time is reported separately from playback/rendering time. Each benchmark session should additionally record the Windows build, NVIDIA driver, active operating mode, GPU mode, display resolution, idle-state summary, and executable SHA-256.
 
+## Observed reference solve-time ranges
+
+The following are preliminary repeated wall-clock observations reported on the reference G835LW machine. They are **observed ranges**, not mean/median/P95/P99 statistics, and they measure solving rather than playback/rendering.
+
+| Order `N` | Surface sites `S(N)` | Orbit components `C(N)` | Observed solve-time range |
+|---:|---:|---:|---:|
+| 4 | 56 | 3 | 0.01–0.03 s |
+| 10 | 488 | 21 | 0.02–0.03 s |
+| 49 | 13,826 | 578 | 0.02–0.03 s |
+| 100 | 58,808 | 2,451 | 0.02–0.03 s |
+| 1,000 | 5,988,008 | 249,501 | 1.12–1.15 s |
+| 10,000 | 599,880,008 | 24,995,001 | 9–11 s |
+| 100,000 | 59,998,800,008 | 2,499,950,001 | 1,300–1,400 s (~21.7–23.3 min) |
+
+The `N = 49` component count follows the implementation's odd-order component-count rule rather than the even-order closed form shown above. These preliminary ranges should not be used to infer asymptotic complexity from isolated ratios. A formal statistical dataset should retain individual samples and exact-verification status for every run.
+
 ## Documentation
 
 - [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — representation and execution model
