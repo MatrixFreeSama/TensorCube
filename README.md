@@ -48,6 +48,16 @@ The current factorization path is CPU state-only. CUDA remains for device report
 
 Displayed Solve time includes state-derived quotient recovery, state-only factorization, independent full Exact replay, authoritative identity confirmation and restoration of the pre-solve scrambled state. It excludes one-time public-basis construction and Deep Random generation.
 
+### Observed reference solve-time range
+
+Repeated wall-clock observations on the same reference test machine used for the main TensorCube measurements gave:
+
+```text
+11D order-4 solve time: 3.9–4.1 s
+```
+
+This is an observed range rather than a mean/median/P95/P99 statistic. Because the current 11D order-4 factorization path is CPU state-only, this result must not be presented as GPU or Tensor-Core factorization performance.
+
 ## Presentation and 11D observation
 
 The interface fixes the visible mathematical identity to `11维 · 4阶` and retains the mainline TensorCube interaction conventions.
