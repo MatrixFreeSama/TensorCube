@@ -31,22 +31,39 @@ The validated build target is a Windows x86-64 GUI executable. The build audit e
 
 Vendor-specific runtime behavior must therefore be measured on the machine under test rather than inferred from the build container.
 
-## Reference physical test machine
+## Reference physical test platform
 
-The primary physical machine reserved for TensorCube measurements is:
+The primary machine reserved for TensorCube measurements is a 2025 **ROG Strix SCAR 18 (G835)**, sold in China as **ROG 枪神9 Plus 超竞版**. The reference unit is recorded as:
 
 ```text
-System: ROG 枪神9 Plus 超竞版
+System: ROG Strix SCAR 18 (2025) G835
 CPU: Intel Core Ultra 9 275HX
+     24 cores / 24 threads
+     up to 5.4 GHz
 GPU: NVIDIA GeForce RTX 5080 Laptop GPU
-Memory: 32 GB
-Storage: 4 TB SSD
-Display: 18-inch MiniLED
+     16 GB GDDR7
+     ROG Boost configuration up to 175 W
+Memory: 32 GB DDR5 system memory (installed test configuration)
+Storage: 4 TB SSD total capacity (installed test configuration)
+Display: 18-inch 2560×1600 240 Hz Mini LED ROG Nebula HDR display
 ```
 
-The storage capacity is 4 TB. It must not be reported as 2 TB in TensorCube benchmark records.
+CPU, GPU, VRAM, rated graphics-power configuration, and display characteristics above follow the manufacturer's G835 platform specification. The 32 GB memory and 4 TB storage values identify the installed physical test unit and must not be generalized to every G835 retail SKU.
 
-The static machine specification does not replace per-session environment capture. Record the Windows version, NVIDIA driver version, active power/performance mode, display resolution, and executable SHA-256 at the time of each measured run.
+The static platform description does not replace per-session environment capture. For every measured benchmark session, record at least:
+
+```text
+Windows version/build
+NVIDIA driver version
+AC/battery power state
+active ROG/Armoury Crate performance mode
+GPU switching / MUX mode
+benchmark display resolution
+Tensor Core runtime state
+executable SHA-256
+```
+
+Where GPU power or thermal behavior is material to a result, record the observed runtime power/temperature state rather than assuming that the nominal maximum graphics-power figure was sustained during the run.
 
 ## Exact-state validation
 
