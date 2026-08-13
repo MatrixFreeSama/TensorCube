@@ -120,7 +120,18 @@ Storage: 4 TB SSD total capacity (installed test configuration)
 Display: 18-inch 2560×1600 240 Hz Mini LED ROG Nebula HDR display
 ```
 
-The machine description identifies the physical reference platform, not a universal specification for every G835LW retail configuration. Measured solve time is reported separately from playback/rendering time. Each benchmark session should additionally record the Windows build, NVIDIA driver, active power/performance mode, GPU switching mode, display resolution, and executable SHA-256.
+For maximum-performance benchmark sessions, the intended operating profile is recorded separately from the hardware identity:
+
+```text
+Power state: AC connected
+Armoury Crate operating mode: Turbo
+GPU mode: Ultimate
+Display path: discrete-GPU / MUX direct path
+```
+
+ASUS defines `Turbo` as its charging-only high-performance operating mode, maximizing CPU/GPU power with maximum fan airflow. ASUS defines `Ultimate` as the discrete-GPU MUX path intended for best performance and lowest display latency. These are independent controls: `Turbo` governs the system performance/power/cooling policy, while `Ultimate` governs the graphics routing mode. The actual active values must still be captured for every measured session rather than inferred from this target profile.
+
+The machine description identifies the physical reference platform, not a universal specification for every G835LW retail configuration. Measured solve time is reported separately from playback/rendering time. Each benchmark session should additionally record the Windows build, NVIDIA driver, active operating mode, GPU mode, display resolution, idle-state summary, and executable SHA-256.
 
 ## Documentation
 
