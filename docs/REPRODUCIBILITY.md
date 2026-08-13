@@ -50,18 +50,50 @@ Display: 18-inch 2560×1600 240 Hz Mini LED ROG Nebula HDR display
 
 CPU, GPU, VRAM, rated graphics-power configuration, and display characteristics above follow the manufacturer's G835LW platform specification. The 32 GB memory and 4 TB storage values identify the installed physical test unit and must not be generalized to every G835LW retail configuration.
 
+## ROG operating and GPU modes
+
+ASUS Armoury Crate exposes two separate control families that must not be conflated in benchmark records.
+
+The **Operating Mode** controls system performance, power, cooling and acoustics. For ROG notebooks, ASUS defines `Turbo` as the charging-only mode that maximizes CPU/GPU power for high-performance workloads and uses maximum fan airflow.
+
+The **GPU Mode** controls graphics routing and power behavior. ASUS documents the four modes as follows:
+
+| GPU mode | Official behavior relevant to benchmarking |
+|---|---|
+| `Ultimate` | Uses the discrete-GPU MUX path for the best performance and lowest button-to-pixel latency. The discrete GPU can bypass the hybrid graphics path and drive the display directly. Higher power use is expected, and a reboot may be required when manually switching the MUX state. |
+| `Standard` | Windows-default `MSHybrid`. Demanding applications can use the discrete GPU while non-intensive tasks use the integrated GPU; graphics-heavy frames may be routed through the integrated-graphics display path. |
+| `Eco` | Completely disables the discrete GPU for maximum energy saving, lower temperatures and lower noise. This mode is not suitable for TensorCube GPU benchmarking. |
+| `Optimized` | ROG automatic policy. On AC power it behaves as the hybrid `Standard` path for demanding versus light workloads; on battery it can disable the discrete GPU for maximum battery life. |
+
+For a maximum-performance TensorCube benchmark session, the target profile is:
+
+```text
+Power state: AC connected
+Armoury Crate operating mode: Turbo
+GPU mode: Ultimate
+Graphics route: discrete-GPU / MUX direct display path
+```
+
+This target profile is not a substitute for measurement-time capture. If the active configuration differs, report the actual configuration rather than silently normalizing it to the target profile.
+
 The static platform description does not replace per-session environment capture. For every measured benchmark session, record at least:
 
 ```text
 Windows version/build
 NVIDIA driver version
 AC/battery power state
-active ROG/Armoury Crate performance mode
-GPU switching / MUX mode
+active ROG/Armoury Crate operating mode
+active GPU mode / MUX route
 benchmark display resolution
+pre-benchmark idle CPU utilization
+pre-benchmark system-memory utilization
+pre-benchmark discrete-GPU utilization and temperature
+pre-benchmark disk and network activity summary
 Tensor Core runtime state
 executable SHA-256
 ```
+
+Individual background processes do not need to be enumerated. A normal Windows idle state is acceptable, but intentional foreground workloads and obvious background transfers or scans should not overlap the measured solve interval.
 
 Where GPU power or thermal behavior is material to a result, record the observed runtime power/temperature state rather than assuming that the nominal maximum graphics-power figure was sustained during the run.
 
@@ -91,14 +123,15 @@ For comparisons with another solver, use the same machine whenever possible. Cro
 
 Recommended procedure:
 
-1. Restart the executable and record OS, CPU, GPU, driver, power mode, and display resolution.
-2. Perform an unmeasured warm-up sufficient to trigger shader compilation and GPU runtime initialization.
-3. Generate legal states without supplying the solver a retained scramble history.
-4. Measure solver time separately from playback/rendering time.
-5. Run multiple independent states per order.
-6. Record failures as failures.
-7. Report at least mean, median, P95, and P99 wall-clock solve time.
-8. Preserve exact-verification status for every measured run.
+1. Restart the executable and record OS, CPU, GPU, driver, power state, ROG operating mode, GPU mode/MUX route, and display resolution.
+2. Confirm the machine is in a normal idle state and record the idle-state summary.
+3. Perform an unmeasured warm-up sufficient to trigger shader compilation and GPU runtime initialization.
+4. Generate legal states without supplying the solver a retained scramble history.
+5. Measure solver time separately from playback/rendering time.
+6. Run multiple independent states per order.
+7. Record failures as failures.
+8. Report at least mean, median, P95, and P99 wall-clock solve time.
+9. Preserve exact-verification status for every measured run.
 
 For a direct comparison against a table-based or CPU solver, also report initialization/precomputation time and memory separately from online solve time.
 
