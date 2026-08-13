@@ -31,6 +31,23 @@ The validated build target is a Windows x86-64 GUI executable. The build audit e
 
 Vendor-specific runtime behavior must therefore be measured on the machine under test rather than inferred from the build container.
 
+## Reference physical test machine
+
+The primary physical machine reserved for TensorCube measurements is:
+
+```text
+System: ROG 枪神9 Plus 超竞版
+CPU: Intel Core Ultra 9 275HX
+GPU: NVIDIA GeForce RTX 5080 Laptop GPU
+Memory: 32 GB
+Storage: 4 TB SSD
+Display: 18-inch MiniLED
+```
+
+The storage capacity is 4 TB. It must not be reported as 2 TB in TensorCube benchmark records.
+
+The static machine specification does not replace per-session environment capture. Record the Windows version, NVIDIA driver version, active power/performance mode, display resolution, and executable SHA-256 at the time of each measured run.
+
 ## Exact-state validation
 
 A benchmark run counts as a successful solve only when the program reports exact completion of the discrete target state. A visual transition to six uniform faces is not sufficient by itself.
@@ -57,7 +74,7 @@ For comparisons with another solver, use the same machine whenever possible. Cro
 
 Recommended procedure:
 
-1. Restart the executable and record OS, CPU, GPU, driver, and power mode.
+1. Restart the executable and record OS, CPU, GPU, driver, power mode, and display resolution.
 2. Perform an unmeasured warm-up sufficient to trigger shader compilation and GPU runtime initialization.
 3. Generate legal states without supplying the solver a retained scramble history.
 4. Measure solver time separately from playback/rendering time.
