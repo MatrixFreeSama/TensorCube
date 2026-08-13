@@ -107,6 +107,21 @@ SHA-256:
 
 The executable is a portable x86-64 Windows GUI program. The final OpenGL shader compilation and vendor-specific GPU execution occur on the user's runtime environment.
 
+## Reference test machine
+
+The primary physical machine reserved for TensorCube measurements is:
+
+```text
+System: ROG 枪神9 Plus 超竞版
+CPU: Intel Core Ultra 9 275HX
+GPU: NVIDIA GeForce RTX 5080 Laptop GPU
+Memory: 32 GB
+Storage: 4 TB SSD
+Display: 18-inch MiniLED
+```
+
+Measured solve-time results are reported separately from playback/rendering time. Driver version, Windows version, power mode, and the exact executable hash should be recorded again for each benchmark session rather than inferred from the machine specification alone.
+
 ## Documentation
 
 - [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — representation and execution model
