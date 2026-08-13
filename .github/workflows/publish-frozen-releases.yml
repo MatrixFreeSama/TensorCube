@@ -17,14 +17,14 @@ jobs:
       - name: Checkout main artifact
         uses: actions/checkout@v4
         with:
-          ref: main
+          ref: ed221593e558f1ecd3fa51fe950ab9c5f631c0d1
           path: mainline
           fetch-depth: 1
 
       - name: Checkout 11D order-4 artifact
         uses: actions/checkout@v4
         with:
-          ref: 11d-order4
+          ref: 103b5728d6e1ae5a21471470fc6d9f40b56e6507
           path: order11d4
           fetch-depth: 1
 
@@ -34,38 +34,30 @@ jobs:
           echo "720dcbcd0c9c3b03006bd668ab1dd3988847cb1dbed1eaf866ee5990d1ea0545  mainline/dist/TensorCube.exe" | sha256sum -c -
           echo "3822abb2879e90423a907d6b5713afa37b205f2445a1de9d3cadd392c041e848  order11d4/dist/TensorCube_11D_Order4.exe" | sha256sum -c -
 
-      - name: Publish 11D order-4 release
+      - name: Recreate 11D order-4 release at frozen commit
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
-          TARGET_SHA="$(git -C order11d4 rev-parse HEAD)"
           TAG="TensorCube-11D-Order4"
-          if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
-            gh release upload "$TAG" order11d4/dist/TensorCube_11D_Order4.exe --clobber --repo "$GITHUB_REPOSITORY"
-          else
-            gh release create "$TAG" order11d4/dist/TensorCube_11D_Order4.exe \
-              --repo "$GITHUB_REPOSITORY" \
-              --target "$TARGET_SHA" \
-              --title "TensorCube 11D Order-4" \
-              --latest=false \
-              --notes $'Frozen executable from the `11d-order4` branch.\n\nAsset filename is unchanged from the repository artifact: `TensorCube_11D_Order4.exe`.\n\nSHA-256: `3822abb2879e90423a907d6b5713afa37b205f2445a1de9d3cadd392c041e848`'
-          fi
+          gh release delete "$TAG" --repo "$GITHUB_REPOSITORY" --cleanup-tag --yes 2>/dev/null || true
+          gh release create "$TAG" order11d4/dist/TensorCube_11D_Order4.exe \
+            --repo "$GITHUB_REPOSITORY" \
+            --target "103b5728d6e1ae5a21471470fc6d9f40b56e6507" \
+            --title "TensorCube 11D Order-4" \
+            --latest=false \
+            --notes $'Frozen executable from the `11d-order4` branch.\n\nAsset filename is unchanged from the repository artifact: `TensorCube_11D_Order4.exe`.\n\nSHA-256: `3822abb2879e90423a907d6b5713afa37b205f2445a1de9d3cadd392c041e848`'
 
-      - name: Publish main TensorCube release
+      - name: Recreate main TensorCube release at frozen commit
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
-          TARGET_SHA="$(git -C mainline rev-parse HEAD)"
           TAG="TensorCube"
-          if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
-            gh release upload "$TAG" mainline/dist/TensorCube.exe --clobber --repo "$GITHUB_REPOSITORY"
-          else
-            gh release create "$TAG" mainline/dist/TensorCube.exe \
-              --repo "$GITHUB_REPOSITORY" \
-              --target "$TARGET_SHA" \
-              --title "TensorCube" \
-              --latest \
-              --notes $'Frozen executable from the `main` branch.\n\nAsset filename is unchanged from the repository artifact: `TensorCube.exe`.\n\nSHA-256: `720dcbcd0c9c3b03006bd668ab1dd3988847cb1dbed1eaf866ee5990d1ea0545`'
-          fi
+          gh release delete "$TAG" --repo "$GITHUB_REPOSITORY" --cleanup-tag --yes 2>/dev/null || true
+          gh release create "$TAG" mainline/dist/TensorCube.exe \
+            --repo "$GITHUB_REPOSITORY" \
+            --target "ed221593e558f1ecd3fa51fe950ab9c5f631c0d1" \
+            --title "TensorCube" \
+            --latest \
+            --notes $'Frozen executable from the `main` branch.\n\nAsset filename is unchanged from the repository artifact: `TensorCube.exe`.\n\nSHA-256: `720dcbcd0c9c3b03006bd668ab1dd3988847cb1dbed1eaf866ee5990d1ea0545`'
