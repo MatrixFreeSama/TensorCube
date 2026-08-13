@@ -135,6 +135,26 @@ Recommended procedure:
 
 For a direct comparison against a table-based or CPU solver, also report initialization/precomputation time and memory separately from online solve time.
 
+## Preliminary observed solve-time ranges
+
+The following values are repeated wall-clock ranges observed on the reference G835LW machine and reported from the executable's solve-time output. They are preserved as an initial physical-machine result set rather than converted into statistics that were not measured.
+
+| Order `N` | Surface sites `S(N)` | Orbit components `C(N)` | Observed solve-time range |
+|---:|---:|---:|---:|
+| 4 | 56 | 3 | 0.01–0.03 s |
+| 10 | 488 | 21 | 0.02–0.03 s |
+| 49 | 13,826 | 578 | 0.02–0.03 s |
+| 100 | 58,808 | 2,451 | 0.02–0.03 s |
+| 1,000 | 5,988,008 | 249,501 | 1.12–1.15 s |
+| 10,000 | 599,880,008 | 24,995,001 | 9–11 s |
+| 100,000 | 59,998,800,008 | 2,499,950,001 | 1,300–1,400 s (~21.7–23.3 min) |
+
+These values are **ranges**, not mean, median, P95 or P99 statistics. No sample count or per-run distribution is implied. The `N = 49` component count uses the implementation's odd-order rule (`m² + 2`, where `m = floor(N/2)`) rather than the even-order formula.
+
+The 4-to-100-order measurements are close to the timing floor of the complete application path on this machine and should not be interpreted as evidence of constant-time asymptotic behavior. Likewise, ratios between the 1,000-, 10,000- and 100,000-order timings should not be used alone to infer algorithmic complexity because fixed costs, parallel occupancy, batching, synchronization and extreme-scale runtime effects can change across these regimes.
+
+For future formal reporting, preserve each measured sample separately together with exact-verification result, active power/GPU mode, driver, idle-state summary and executable hash. A later sample-level dataset may supersede these preliminary ranges without deleting them from the historical record.
+
 ## Scaling experiments
 
 The supported order catalogue makes decade-scale experiments possible. Useful checkpoints include:
