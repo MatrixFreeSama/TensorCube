@@ -109,10 +109,10 @@ The executable is a portable x86-64 Windows GUI program. The final OpenGL shader
 
 ## Reference benchmark platform
 
-Physical performance measurements use a 2025 **ROG Strix SCAR 18 (G835)**, sold in China as **ROG 枪神9 Plus 超竞版**, with the following reference configuration:
+Physical performance measurements use a 2025 **ROG Strix SCAR 18 (G835LW)**, sold in China as **ROG 枪神9 Plus 超竞版**, with the following reference configuration:
 
 ```text
-System: ROG Strix SCAR 18 (2025) G835
+System: ROG Strix SCAR 18 (2025) G835LW
 CPU: Intel Core Ultra 9 275HX, 24 cores / 24 threads, up to 5.4 GHz
 GPU: NVIDIA GeForce RTX 5080 Laptop GPU, 16 GB GDDR7, ROG Boost up to 175 W
 Memory: 32 GB DDR5 system memory (installed test configuration)
@@ -120,7 +120,7 @@ Storage: 4 TB SSD total capacity (installed test configuration)
 Display: 18-inch 2560×1600 240 Hz Mini LED ROG Nebula HDR display
 ```
 
-The machine description identifies the physical reference platform, not a universal specification for every G835 SKU. Measured solve time is reported separately from playback/rendering time. Each benchmark session should additionally record the Windows build, NVIDIA driver, active power/performance mode, GPU switching mode, display resolution, and executable SHA-256.
+The machine description identifies the physical reference platform, not a universal specification for every G835LW retail configuration. Measured solve time is reported separately from playback/rendering time. Each benchmark session should additionally record the Windows build, NVIDIA driver, active power/performance mode, GPU switching mode, display resolution, and executable SHA-256.
 
 ## Documentation
 
